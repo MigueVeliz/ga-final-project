@@ -1,7 +1,7 @@
 # ga-final-project
 
 # The name of your app.
-* Nyc Plays
+* Nyc Plays (might change it)
 
 # What your MVP looks like.
 * My app will have the folling functionalities: It will initially support: Daily Games: Take 5, Numbers, Win 4, Qucik Draw, Pick 10
@@ -13,7 +13,8 @@
 -- The user will be able to check previus winning numbers for a specific game & data he previously stored.
 
 # What your reach goals are.
-*Make my web app into a React Native App and publish it on the playstore
+* Make my web app into a React Native App and publish it on the playstore
+* Add a Scan Ticket functionality
 
 # User stories that describe how your app will be used.
 1- "Oh, I am tired of writing all my take 5 numbers on paper and then going to the store and look at my paper to remember my take 5 numbers"
@@ -21,22 +22,33 @@
 2- "Someone needs to create an app that will allow the lotto players to store their data on their phones in a clean and nice way that they can remember."
 
 # Wireframes!
-http://imgur.com/a/jcbKo
+
+![](https://preview.ibb.co/kHxeKv/Screen_Shot_2017_08_04_at_9_49_51_AM.png)
+
+![](https://preview.ibb.co/ha9FsF/Screen_Shot_2017_08_04_at_10_05_17_AM.png)
 
 # What technologies you intend on using.
-*React
-*Rails
-*Javascript
-*Foundation Framework
-*Node
-*Express
-*NYC Lotto API
+* React
+* Rails
+* Javascript
+* Foundation Framework
+* Node
+* Express
+* NYC Lotto API
 
 
 # Your timeline
+- set up Rails Back End
+- Get Data from API and get FULL CRUD
+- Set up my database & relations
+- Use the Magic of React :D
+---- React Native ( I still need to google the best way to use React Native)
+
 
 # Foreseen challenges or obstacles.
 *Make my web app into a React Native App and publish it on the playstore
 
 
 # A link to your repo!
+
+https://github.com/MigueVeliz/ga-final-project
