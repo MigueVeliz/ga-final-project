@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class TakeFive extends Component {
+class Numbers extends Component {
 	render() {
 		return (
 			<div className = "box">
-				<p>TakeFive</p>
+				<p>Numbers</p>
 			</div>
 		)
 	}
 }
 
-export default TakeFive;
+export default Numbers;

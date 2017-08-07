@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class TakeFive extends Component {
+class QuickDraw extends Component {
 	render() {
 		return (
 			<div className = "box">
-				<p>TakeFive</p>
+				<p>QuickDraw</p>
 			</div>
 		)
 	}
 }
 
-export default TakeFive;
+export default QuickDraw;
