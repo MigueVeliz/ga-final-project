@@ -1,0 +1,25 @@
+{
+  "name": "ga-final-project",
+  "version": "1.0.0",
+  "description": "# The name of your app. * Nyc Plays (might change it)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MigueVeliz/ga-final-project.git"
+  },
+  "author": "Angel Veliz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MigueVeliz/ga-final-project/issues"
+  },
+  "homepage": "https://github.com/MigueVeliz/ga-final-project#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "pg-promise": "^6.3.7"
+  }
+}
