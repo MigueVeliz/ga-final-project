@@ -7,19 +7,26 @@ import Numbers from './components/Numbers'
 import QuickDraw from './components/QuickDraw'
 import Win4 from './components/Win4'
 import Pick10 from './components/Pick10'
+import Navigation from './components/Navigation'
+import Footer from './components/Footer'
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>The best App to store lotto info!</p>
+        <Navigation />
 
-        <TakeFive />
-        <Numbers />
-        <QuickDraw />
-        <Win4 />
-        <Pick10 />
+
+        <div className = "container">
+          <TakeFive />
+          <Numbers />
+          <QuickDraw />
+          <Win4 />
+          <Pick10 />
+        </div>
+
+        <Footer />
 
 
 
