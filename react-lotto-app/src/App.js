@@ -70,7 +70,7 @@ class App extends Component {
     }
     else if(gameMode === "Numbers") {
       return <Numbers 
-        // getNumbersData = { this.getNumbersData.bind(this) }
+        getNumbersData = { this.getNumbersData.bind(this) }
         numbersData = { this.state.numbers }
         getGameMode = { this.getGameMode.bind(this) }
         newNumbers = { this.state.numbersNewNumbers }
@@ -85,6 +85,15 @@ class App extends Component {
     console.log("running getTake5Data " + data[0].first_number) 
     this.setState({
       takeFive: data
+    })
+
+  }
+
+    // Gets the Numbers Game Data
+  getNumbersData( data ) {
+    console.log("running getNumbersData[0] = " + data[0].first_digit) 
+    this.setState({
+      numbers: data
     })
 
   }

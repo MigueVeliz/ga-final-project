@@ -39,35 +39,6 @@ class TakeFive extends Component {
 		})
 	}//end of displayData
 
-	/*method that makes a POST Request to the
-	database to save the new 5 numbers chosen 
-	by the user*/
-/*	addTake5Numbers() {
-		console.log("Running addTake5Numbers")
-
-		fetch('http://localhost:8080/api/', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				first_number: 4,
-				second_number: 5,
-				third_number: 12,
-				fourth_number: 23,
-				fifth_number: 33,
-			})
-		})
-		.then((response) => {
-			return response.json()
-		})
-		.then((body) => {
-			console.log(body)
-		});
-
-	}//end of AddTake5Numbers*/
-
 
 	/*section that shows numbers 1 - 39
 	the user has to choose 5 numbers that will
