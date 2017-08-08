@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 
 // 3. connect controller
 app.use('/api', require('./controllers/take_five'));
+app.use('/api/numbers', require('./controllers/numbers'));
 
 // 4. listen
 app.listen(PORT, () => console.log('Server is listening on port: ', PORT));

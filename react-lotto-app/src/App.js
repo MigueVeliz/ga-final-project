@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import TakeFive from './components/TakeFive'
-/*import Numbers from './components/Numbers'
-import QuickDraw from './components/QuickDraw'
-import Win4 from './components/Win4'
-import Pick10 from './components/Pick10'*/
+import Numbers from './components/Numbers'
+//import QuickDraw from './components/QuickDraw'
+//import Win4 from './components/Win4'
+//import Pick10 from './components/Pick10'
 import Navigation from './components/Navigation'
 // import Footer from './components/Footer'
 
@@ -16,9 +16,12 @@ class App extends Component {
     super()
 
     this.state = {
-      takeFive: [],
-      gameMode: 'HOME',
-      numbers: [],
+      gameMode: 'HOME', // Take 5 - First Game
+      takeFive: [], // Take 5 - First Game
+      takeFiveNumbers: [], // Take 5 - First Game
+      numbers: [], // Numbers - Second Game
+      numbersNewNumbers: [] //Numbers - Second Game
+
     }
   }
 
@@ -40,7 +43,7 @@ class App extends Component {
           <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">TakeFive</p>
           </div>
-          <div className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">Numbers</p>
           </div>
           <div className = "box">
@@ -62,12 +65,22 @@ class App extends Component {
         takeFiveData = { this.state.takeFive }
         getGameMode = { this.getGameMode.bind(this) }
         newNumber = { this.newNumber.bind(this) }
-        numbers = { this.state.numbers }
+        numbers = { this.state.takeFiveNumbers }
+      />
+    }
+    else if(gameMode === "Numbers") {
+      return <Numbers 
+        // getNumbersData = { this.getNumbersData.bind(this) }
+        numbersData = { this.state.numbers }
+        getGameMode = { this.getGameMode.bind(this) }
+        newNumbers = { this.state.numbersNewNumbers }
+
       />
     }
   }
 
 
+  // Gets the Take 5 Game Data
   getTake5Data( data ) {
     console.log("running getTake5Data " + data[0].first_number) 
     this.setState({
@@ -76,16 +89,17 @@ class App extends Component {
 
   }
 
+  // Adds 5 numbers to the Take 5 arra
   newNumber(number) {
-     let n = this.state.numbers
+     let n = this.state.takeFiveNumbers
 
      n.push(parseInt(number.target.textContent, 10))
 
     this.setState({
-      numbers: n
+      takeFiveNumbers: n
     })
 
-    console.log(this.state.numbers)
+    console.log(this.state.takeFiveNumbers)
   }
 
 
