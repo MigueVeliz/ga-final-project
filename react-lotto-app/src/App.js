@@ -79,7 +79,7 @@ class App extends Component {
   newNumber(number) {
      let n = this.state.numbers
 
-     n.push(parseInt(number.target.textContent))
+     n.push(parseInt(number.target.textContent, 10))
 
     this.setState({
       numbers: n

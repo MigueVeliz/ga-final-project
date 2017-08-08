@@ -22,7 +22,7 @@ p {
 }
 
 .title {
-  font-size: 12px;
+  font-size: 22px;
   color: white;
   font-weight: bold;
   /*margin-top: 4px;*/
@@ -40,7 +40,7 @@ p {
 
 .game-type {
   /*height: 100px;*/
-  line-height: 90px;
+  line-height: 150px;
   font-weight: bold;
   /*white-space: nowrap;*/
 }
@@ -50,7 +50,7 @@ p {
 }
 
 .box p {
-  font-size: 10px;
+  font-size: 20px;
 }
 
 
@@ -61,12 +61,12 @@ p {
 }
 
 .new-take-5-number-styles {
-  width: 5%;
+  width: 7%;
   background-color: #B6244F;
   padding: 6px;
   border-radius: 100%;
   display: inline-block;
-  font-size: 10px;
+  font-size: 19px;
   color: white;
   margin: 4px;
 }
@@ -76,15 +76,26 @@ p {
   color: black;
 }
 
-.take-5-number-styles {
+.selected-number {
   width: 7%;
-  background-color: #B6244F;
   padding: 6px;
   border-radius: 100%;
   display: inline-block;
-  font-size: 13px;
+  font-size: 19px;
+  margin: 4px;
+  background-color: #E8C547;
+  color: black;
+}
+
+.take-5-number-styles {
+  width: 10%;
+  background-color: #9DC4B5;
+  padding: 6px;
+  border-radius: 100%;
+  display: inline-block;
+  font-size: 25px;
   color: white;
-  margin: 1px 6px;
+  margin: 1px 10px;
 }
 
 .list {
@@ -111,7 +122,7 @@ p {
 .submit-take-5 {
   background-color: #274060;
   padding: 4px;
-  font-size: 10px;
+  font-size: 20px;
   color: white;
 }
 
@@ -119,10 +130,17 @@ p {
   background-color: #1B2845;
 }
 
+.previous-numbers-text {
+  font-size: 30px;
+  margin: 40px 0px;
+  color: #29335C;
+
+}
+
 .take-5-delete-button {
   background-color: #F0C808;
   padding: 5px;
-  font-size: 7px;
+  font-size: 15px;
   display: inline;
   border-radius: 10%;
 }
@@ -132,7 +150,7 @@ p {
   color: white;
   background-color: #077187;
   padding: 8px;
-  font-size: 10px;
+  font-size: 20px;
   display: inline-block;
 }
 

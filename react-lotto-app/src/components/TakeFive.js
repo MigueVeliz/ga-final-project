@@ -82,14 +82,23 @@ class TakeFive extends Component {
 		return numbers.map((el, index) => {
 			return (
 				<li 
-				className = "new-take-5-number-styles" 
-				key = { index }
-				onClick = { this.props.newNumber.bind(el) }
+					className = {  this.active(el) ? "selected-number" : "new-take-5-number-styles"} 
+					key = { index }
+					onClick = { this.props.newNumber.bind(el) }
 				> { el } </li>
 			)
 		})
 	}//end of chooseNewNumbers
 
+	// Return true or false if number is in the 
+	// this.state.props.numbers
+	active(number) {	
+		return this.props.numbers.includes(number)
+	}
+
+	/*Adds the new 5 numbers chosen by the user to the
+	datase and they will be render on the Previous Numbers
+	section on the bottom*/
 	addNewNumbers() {
 		console.log("Running addNewNumbers!")
 
@@ -121,12 +130,16 @@ class TakeFive extends Component {
 
 	}
 
+
+	/*Button that appears when the user has selected 5
+	numbers. This botton when clicked, will trigger
+	another function that adds the numbers to the DB*/
 	submitButton() {
 		if (this.props.numbers.length === 5 ) {
 			return (
 				<div 
 					className = "submit-take-5"
-					onClick = { this.addNewNumbers() }
+					onClick = { () => { this.addNewNumbers() } }
 				>
 					<p>Add Numbers</p>
 				</div>
@@ -162,7 +175,7 @@ class TakeFive extends Component {
 					{ this.submitButton() }
 				</div>
 
-				<p>Your previous Numbers</p>
+				<p className = "previous-numbers-text">Your previous Numbers</p>
 				<div  className = "old-numbers">
 					{ this.displayData() }
 				</div>
