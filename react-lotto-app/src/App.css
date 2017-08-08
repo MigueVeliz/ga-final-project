@@ -84,27 +84,47 @@ p {
   display: inline-block;
   font-size: 13px;
   color: white;
-  margin: 6px;
+  margin: 1px 6px;
 }
 
 .list {
+  width: 80%;
   list-style: none;
   padding: 0;
   text-align: center;
-  /*display: inline-block;*/
+  display: inline-block;
   /*margin: 10px;*/
-
-
 }
 
 .new-numbers {
   width: 100vw;
   background-color: #B6174B;
+  padding: 2px 0px;
 }
 
 .old-numbers {
   width: 100vw;
-  background-color: #D6E3F8;
+  background-color: #445E93;
+  padding: 3px 0px;
+}
+
+.submit-take-5 {
+  background-color: #274060;
+  padding: 4px;
+  font-size: 10px;
+  color: white;
+}
+
+.submit-take-5:hover {
+  background-color: #1B2845;
+}
+
+.take-5-delete-button {
+  background-color: #F0C808;
+  padding: 5px;
+  font-size: 7px;
+  display: inline;
+  border-radius: 10%;
 }
 
 

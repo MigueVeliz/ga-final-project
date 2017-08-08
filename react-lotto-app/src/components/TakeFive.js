@@ -4,6 +4,8 @@ import GoHome from './GoHome'
 
 class TakeFive extends Component {
 
+	/*game information is loaded when
+	this component is mounted*/
 	componentDidMount() {
 		fetch('http://localhost:8080/api/')
 		.then((response) => {
@@ -14,8 +16,9 @@ class TakeFive extends Component {
 
 			this.props.getTake5Data(responseJson);
 		})
-	}
+	}//end of componentDidMount
 
+	// Old Take 5 numbers are rendered in the page
 	displayData() {
 		return this.props.takeFiveData.map((el, index) => {
 			return (
@@ -27,12 +30,19 @@ class TakeFive extends Component {
 						<li className = "take-5-number-styles"> { el.fourth_number } </li>
 						<li className = "take-5-number-styles"> { el.fifth_number } </li>
 					</ul>
+					<div onClick = { () => { this.deleteNumbers(el.id) } } 
+						className = "take-5-delete-button">
+						Delete
+					</div>
 				</div>
 			)
 		})
-	}
+	}//end of displayData
 
-	addTake5Numbers() {
+	/*method that makes a POST Request to the
+	database to save the new 5 numbers chosen 
+	by the user*/
+/*	addTake5Numbers() {
 		console.log("Running addTake5Numbers")
 
 		fetch('http://localhost:8080/api/', {
@@ -56,8 +66,12 @@ class TakeFive extends Component {
 			console.log(body)
 		});
 
-	}//end of AddTake5Numbers
+	}//end of AddTake5Numbers*/
 
+
+	/*section that shows numbers 1 - 39
+	the user has to choose 5 numbers that will
+	be added to the database*/
 	chooseNewNumbers() {
 		let numbers = [];
 
@@ -67,12 +81,71 @@ class TakeFive extends Component {
 
 		return numbers.map((el, index) => {
 			return (
-				<li className = "new-take-5-number-styles" key = { index }> { el } </li>
+				<li 
+				className = "new-take-5-number-styles" 
+				key = { index }
+				onClick = { this.props.newNumber.bind(el) }
+				> { el } </li>
 			)
 		})
+	}//end of chooseNewNumbers
 
-		console.log(numbers.length)
+	addNewNumbers() {
+		console.log("Running addNewNumbers!")
+
+		let numbers = this.props.numbers
+
+		console.log("numbers")
+
+
+		fetch('http://localhost:8080/api/', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				first_number: numbers[0],
+				second_number: numbers[1],
+				third_number: numbers[2],
+				fourth_number: numbers[3],
+				fifth_number: numbers[4],
+			})
+		})
+		.then((response) => {
+			return response.json()
+		})
+		.then((body) => {
+			console.log(body)
+		});
+
 	}
+
+	submitButton() {
+		if (this.props.numbers.length === 5 ) {
+			return (
+				<div 
+					className = "submit-take-5"
+					onClick = { this.addNewNumbers() }
+				>
+					<p>Add Numbers</p>
+				</div>
+			)
+		}
+	}
+
+	/*Deletes a row of 5 numbers previously saved 
+	by the user*/
+	deleteNumbers(id) {
+
+		console.log("deleting numbers widh ID:" + id ) 
+
+	    fetch('http://localhost:8080/api/' + id, {
+	        method: 'DELETE',
+	        mode: 'CORS',
+	    }).then(res => res)
+
+	}//end of deleteNumbers
 
 
 	render() {
@@ -85,6 +158,9 @@ class TakeFive extends Component {
 					{ this.chooseNewNumbers()}
 				</div>
 
+				<div>
+					{ this.submitButton() }
+				</div>
 
 				<p>Your previous Numbers</p>
 				<div  className = "old-numbers">
