@@ -35,7 +35,14 @@ p {
   background-color: #2F97C1;
   color: white;
   display: inline-block;
-  margin: 5px;
+  margin: 10px 5px;
+}
+
+.game-type {
+  /*height: 100px;*/
+  line-height: 90px;
+  font-weight: bold;
+  /*white-space: nowrap;*/
 }
 
 .box:hover {
@@ -47,12 +54,74 @@ p {
 }
 
 
+/*Take 5*/
+.take-five {
+  width: 100vw;
+  height: 83vh;
+}
+
+.new-take-5-number-styles {
+  width: 5%;
+  background-color: #B6244F;
+  padding: 6px;
+  border-radius: 100%;
+  display: inline-block;
+  font-size: 10px;
+  color: white;
+  margin: 4px;
+}
+
+.new-take-5-number-styles:hover {
+  background-color: #E8C547;
+  color: black;
+}
+
+.take-5-number-styles {
+  width: 7%;
+  background-color: #B6244F;
+  padding: 6px;
+  border-radius: 100%;
+  display: inline-block;
+  font-size: 13px;
+  color: white;
+  margin: 6px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  /*display: inline-block;*/
+  /*margin: 10px;*/
+
+
+}
+
+.new-numbers {
+  width: 100vw;
+  background-color: #B6174B;
+}
+
+.old-numbers {
+  width: 100vw;
+  background-color: #D6E3F8;
+}
+
+
+.go-home {
+  color: white;
+  background-color: #077187;
+  padding: 8px;
+  font-size: 10px;
+  display: inline-block;
+}
 
 /*Footer*/
 .footer {
   background-color: #2F394D;
-  margin-top: 50px;
+  margin-top: 13px;
   padding: 15px;
+  /*position: relative;*/
 }
 
 .footer p {

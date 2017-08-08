@@ -4,7 +4,7 @@ class QuickDraw extends Component {
 	render() {
 		return (
 			<div className = "box">
-				<p>QuickDraw</p>
+				<p className = "game-type">QuickDraw</p>
 			</div>
 		)
 	}

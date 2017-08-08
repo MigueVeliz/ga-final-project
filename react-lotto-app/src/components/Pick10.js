@@ -4,7 +4,7 @@ class Pick10 extends Component {
 	render() {
 		return (
 			<div className = "box">
-				<p>Pick 10</p>
+				<p className = "game-type">Pick 10</p>
 			</div>
 		)
 	}

@@ -4,7 +4,7 @@ class Numbers extends Component {
 	render() {
 		return (
 			<div className = "box">
-				<p>Numbers</p>
+				<p className = "game-type">Numbers</p>
 			</div>
 		)
 	}
