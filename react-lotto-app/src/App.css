@@ -225,6 +225,7 @@ p {
   color: black;
   margin: 5px 5px;
 }
+
 .first-digit-styles:hover,
 .wager-type-styles:hover,
 .amount-per-wager-styles:hover,
@@ -232,6 +233,17 @@ p {
 .number_of_tickets-styles:hover,
 .number-of-days-styles:hover {
   background-color: #0075C4;
+}
+
+.selected-number-numbers {
+  width: 7%;
+  background-color: #47E5BC;
+  padding: 4px;
+  border-radius: 100%;
+  display: inline-block;
+  font-size: 17px;
+  color: black;
+  margin: 5px 2px;
 }
 
 .old-numbers-container {

@@ -73,6 +73,7 @@ class App extends Component {
         getNumbersData = { this.getNumbersData.bind(this) }
         numbersData = { this.state.numbers }
         getGameMode = { this.getGameMode.bind(this) }
+        getNewNumbers = { this.newNumbersNumbers.bind(this) }
         newNumbers = { this.state.numbersNewNumbers }
 
       />
@@ -109,6 +110,31 @@ class App extends Component {
     })
 
     console.log(this.state.takeFiveNumbers)
+  }
+
+  // Adds Numbers to the Numbers arra
+  newNumbersNumbers(number) {
+    let n = this.state.numbersNewNumbers
+    let num = number.target.textContent
+
+    console.log(`numer --> ` + num )
+
+    if (isNaN(num)) {
+        console.log("its not a number")
+        n.push(num)
+
+     } else {
+        console.log("its  a number")
+        n.push(parseInt(num, 10))
+        // n.push(number.target.textContent)
+
+     }
+
+    this.setState({
+      numbersNewNumbers: n
+    })
+
+    console.log(this.state.numbersNewNumbers)
   }
 
 
