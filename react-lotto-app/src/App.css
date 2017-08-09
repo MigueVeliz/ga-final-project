@@ -296,7 +296,7 @@ p {
 .old-quick-draw-container {
   width: 100vw;
   /*height: 400px;*/
-  background-color: #AAD922;
+  background-color: #2E2D4D;
   padding: 3px 0px;
 
 }
@@ -378,6 +378,17 @@ p {
   border-radius: 10%;
 }
 
+.submit-quick-draw-button {
+  background-color: #0D2C54;
+  padding: 4px;
+  font-size: 20px;
+  color: white;
+}
+
+.submit-quick-draw-button:hover {
+  background-color: #1D201F;
+  color: yellow;
+}
 
 
 

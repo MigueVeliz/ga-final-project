@@ -130,6 +130,94 @@ class QuickDraw extends Component {
 	}// end of choooseNewQuickDrawNumbers
 
 
+	/*Button that appears when the user has selected 5
+	numbers. This botton when clicked, will trigger
+	another function that adds the numbers to the DB*/
+	submitButton() {
+		// if (this.props.newNumbers.length === 8 ) {
+			return (
+				<div 
+					className = "submit-quick-draw-button"
+					onClick = { () => { this.parseValues() } }
+					//onClick = { () => { this.addNewNumbers() } }
+				>
+					<p>Add New QuickDraw Numbers</p>
+				</div>
+			 )
+		//}
+	}
+
+	parseValues() {
+
+		// array of values after the user has successfully
+		// click al require numbers
+		let values = this.props.newQuickDrawNumbers
+		let numbersString = ""
+
+		let spots = values.shift()
+
+		let numbers = []
+		let howMuchPerDraw = 0
+		let quickDrawExtra = "no"
+		let consecutiveDraws = 0
+
+		// Getting total of numbers determine by
+		// spots
+		for(let i = 0; i < spots; i++){
+			numbers.push( values.shift() )
+		}
+
+		/*numbers.map((el, index) => {
+			return numbersString += " " + el
+		})*/
+
+		numbers.forEach((el) => {
+			numbersString += " " + el
+		})
+
+		howMuchPerDraw = values.shift()
+		quickDrawExtra = values.shift()
+		consecutiveDraws = values.shift()
+
+		console.log("spots: " + spots)
+		console.log("numbers: " + numbersString)
+		console.log("howMuchPerDraw: " + howMuchPerDraw)
+		console.log("quickDrawExtra: " + quickDrawExtra)
+		console.log("consecutiveDraws: " + consecutiveDraws)
+
+		// Makes a POST REQUEST
+		this.addNewQuickDrawNumbers( spots, numbersString, howMuchPerDraw, quickDrawExtra, consecutiveDraws)
+
+	}
+
+	/*Adds the NEW QUICK DRAW NUMBERS chosen by the user to the
+	datase and they will be render on the Previous Numbers
+	section on the bottom*/
+	addNewQuickDrawNumbers( spots, numbersString, howMuchPerDraw, quickDrawExtra, consecutiveDraws ) {
+		console.log("Running addNewQuickDrawNumbers!")
+
+		fetch('http://localhost:8080/api/quick_draw', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				spots: spots,
+				numbers: numbersString,
+				how_much_per_draw: howMuchPerDraw,
+				quick_draw_extra: quickDrawExtra,
+				consecutive_draws: consecutiveDraws,
+			})
+		})
+		.then((response) => {
+			return response.json()
+		})
+		.then((body) => {
+			console.log(body)
+		});
+
+	}
 
 	render() {
 		return (
@@ -138,6 +226,10 @@ class QuickDraw extends Component {
 
 				<div className = "new-quick-draw-numbers">
 					{ this.chooseNewQuickDrawNumbers() }
+				</div>
+
+				<div>
+					{ this.submitButton() }
 				</div>
 
 				<p className = "previous-numbers-text">Your previous Numbers</p>
