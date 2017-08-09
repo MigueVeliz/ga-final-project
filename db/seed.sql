@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS take_five;
 DROP TABLE IF EXISTS numbers;
+DROP TABLE IF EXISTS quick_draw;
 
 CREATE TABLE take_five(
 	id SERIAL PRIMARY KEY,
@@ -29,3 +30,22 @@ CREATE TABLE numbers(
 INSERT INTO numbers(first_digit, second_digit, third_digit, wager_type, amount_per_wager, draw_time, number_of_tickets, number_of_days) VALUES
 (2, 5, 7, 'str', .50, 'day', 3, 2), 
 (3, 6, 2, 'box', 1, 'eve', 5, 6);
+
+CREATE TABLE quick_draw(
+	id SERIAL PRIMARY KEY,
+	spots INTEGER,
+	numbers VARCHAR,
+	how_much_per_draw INTEGER,
+	quick_draw_extra VARCHAR,
+	consecutive_draws INTEGER
+);
+
+INSERT INTO quick_draw( spots, numbers, how_much_per_draw, quick_draw_extra, consecutive_draws) VALUES
+(6, '34 23 65 78 45 4', 4, 'yes', 3),
+(8, '34 23 65 78 45 6 10 55', 2, 'no', 10);
+
+
+
+
+
+

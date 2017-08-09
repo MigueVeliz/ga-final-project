@@ -4,7 +4,7 @@ import './App.css';
 
 import TakeFive from './components/TakeFive'
 import Numbers from './components/Numbers'
-//import QuickDraw from './components/QuickDraw'
+import QuickDraw from './components/QuickDraw'
 //import Win4 from './components/Win4'
 //import Pick10 from './components/Pick10'
 import Navigation from './components/Navigation'
@@ -49,7 +49,7 @@ class App extends Component {
           <div className = "box">
             <p className = "game-type">Pick10</p>
           </div>
-          <div className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">QuickDraw</p>
           </div>
           <div className = "box">
@@ -75,8 +75,10 @@ class App extends Component {
         getGameMode = { this.getGameMode.bind(this) }
         getNewNumbers = { this.newNumbersNumbers.bind(this) }
         newNumbers = { this.state.numbersNewNumbers }
-
       />
+    }
+    else if (gameMode === "QuickDraw") {
+      return <QuickDraw />
     }
   }
 
@@ -126,8 +128,6 @@ class App extends Component {
      } else {
         console.log("its  a number")
         n.push(parseInt(num, 10))
-        // n.push(number.target.textContent)
-
      }
 
     this.setState({
