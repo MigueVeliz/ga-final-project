@@ -287,6 +287,96 @@ p {
   border-radius: 10%;
 }
 
+/*******************************************
+********************************************
+*********** Q U I C K   D R A W ************
+********************************************
+*******************************************/
+
+.old-quick-draw-container {
+  width: 100vw;
+  /*height: 400px;*/
+  background-color: #AAD922;
+  padding: 3px 0px;
+
+}
+
+.new-quick-draw-numbers {
+  width: 100vw;
+  background-color: #011627;
+  padding: 2px 0px;
+}
+
+.quick-draw-styles {
+  width: 7%;
+  background-color: #17BEBB;
+  padding: 4px;
+  border-radius: 30%;
+  display: inline-block;
+  font-size: 17px;
+  color: white;
+  margin: 6px 2px;
+}
+
+.spots { background-color: #E71D36; }
+.q-draw-numbers { background-color: #A80874; }
+.how-much-per-draw { background-color: #0CA4A5; margin: 0px 16px;}
+.quick-draw-extra { background-color: #5EF38C; color: black; }
+.consecutive-draws { background-color: #691E06; }
+
+.spots:hover,
+.q-draw-numbers:hover,
+.how-much-per-draw:hover,
+.quick-draw-extra:hover,
+.consecutive-draws:hover {
+  background-color: #8AC926;
+}
+
+.old-quick-draw-list {
+  width: 80%;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  display: inline-block;
+  /*margin: 10px;*/
+}
+
+.quick-draw-old-number-styles {
+  width: 7%;
+  background-color: #253D5B;
+  padding: 4px;
+  border-radius: 20%;
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+  margin: 1px 2px;
+}
+
+.quick-draw-numbers {
+  width: 50%;
+  padding: 4px 0px;
+  font-size: 15px;
+  margin: 1px 1px;
+  border-radius: 10%;
+  background-color: #D05353;
+
+}
+
+.old-spots { background-color: #E71D36; }
+.old-numbers { background-color: #A80874; }
+.old-how-much-per-game { background-color: #0CA4A5; }
+.old-quick-draw-extra { background-color: #5EF38C; color: black; }
+.old-consecutive-number { background-color: #691E06; }
+
+
+.quick-draw-delete-button {
+  background-color: red;
+  color: black;
+  padding: 5px;
+  font-size: 15px;
+  display: inline;
+  border-radius: 10%;
+}
 
 
 

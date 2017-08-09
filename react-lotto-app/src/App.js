@@ -16,11 +16,13 @@ class App extends Component {
     super()
 
     this.state = {
-      gameMode: 'HOME', // Take 5 - First Game
-      takeFive: [], // Take 5 - First Game
-      takeFiveNumbers: [], // Take 5 - First Game
-      numbers: [], // Numbers - Second Game
-      numbersNewNumbers: [] //Numbers - Second Game
+      gameMode: 'HOME', // ******* Take 5 - First Game
+      takeFive: [], // *********** Take 5 - First Game
+      takeFiveNumbers: [], // **** Take 5 - First Game
+      numbers: [], // ************ Numbers - Second Game
+      numbersNewNumbers: [], // ** Numbers - Second Game
+      quickDraw: [], // ********** Quick Draw - Third Game
+      quickDrawNewNumbers: [] // * Quick Draw - Third Game
 
     }
   }
@@ -61,24 +63,30 @@ class App extends Component {
     }
     else if (gameMode === "TakeFive") {
       return <TakeFive 
+        getGameMode = { this.getGameMode.bind(this) }
         getTake5Data = { this.getTake5Data.bind(this) } 
         takeFiveData = { this.state.takeFive }
-        getGameMode = { this.getGameMode.bind(this) }
         newNumber = { this.newNumber.bind(this) }
         numbers = { this.state.takeFiveNumbers }
       />
     }
     else if(gameMode === "Numbers") {
       return <Numbers 
+        getGameMode = { this.getGameMode.bind(this) }
         getNumbersData = { this.getNumbersData.bind(this) }
         numbersData = { this.state.numbers }
-        getGameMode = { this.getGameMode.bind(this) }
         getNewNumbers = { this.newNumbersNumbers.bind(this) }
         newNumbers = { this.state.numbersNewNumbers }
       />
     }
     else if (gameMode === "QuickDraw") {
-      return <QuickDraw />
+      return <QuickDraw 
+        getGameMode = { this.getGameMode.bind(this) }
+        getQuickDrawData = { this.getQuickDrawData.bind(this) }
+        quickDrawData = { this.state.quickDraw }
+        getNewQuickDrawNumbers = { this.newQuickDrawNumbers.bind(this) }
+        newQuickDrawNumbers = { this.state.quickDrawNewNumbers }
+      />
     }
   }
 
@@ -101,6 +109,16 @@ class App extends Component {
 
   }
 
+  // Gets the Numbers Game Data
+  getQuickDrawData( data ) {
+    console.log("running getQuickDrawData[0] = " + data[0].spots) 
+    this.setState({
+      quickDraw: data
+    })
+
+  }
+
+
   // Adds 5 numbers to the Take 5 arra
   newNumber(number) {
      let n = this.state.takeFiveNumbers
@@ -114,7 +132,7 @@ class App extends Component {
     console.log(this.state.takeFiveNumbers)
   }
 
-  // Adds Numbers to the Numbers arra
+  // Adds Numbers to the Numbers array
   newNumbersNumbers(number) {
     let n = this.state.numbersNewNumbers
     let num = number.target.textContent
@@ -135,6 +153,29 @@ class App extends Component {
     })
 
     console.log(this.state.numbersNewNumbers)
+  }
+
+  // Adds NEW QuickDraw to the quickDrawNewNumbers array
+  newQuickDrawNumbers(number) {
+    let n = this.state.quickDrawNewNumbers
+    let num = number.target.textContent
+
+    console.log(`numer --> ` + num )
+
+    if (isNaN(num)) {
+        console.log("its not a number")
+        n.push(num)
+
+     } else {
+        console.log("its  a number" + num)
+        n.push(parseInt(num, 10))
+     }
+
+    this.setState({
+      quickDrawNewNumbers: n
+    })
+
+    console.log(this.state.quickDrawNewNumbers)
   }
 
 

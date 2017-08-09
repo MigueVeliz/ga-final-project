@@ -19,7 +19,7 @@ class Numbers extends Component {
 		})
 	}//end of componentDidMount
 
-		// Old Take 5 numbers are rendered in the page
+	// Old Take 5 numbers are rendered in the page
 	displayData() {
 		return this.props.numbersData.map((el, index) => {
 			return (
@@ -55,29 +55,7 @@ class Numbers extends Component {
 	    }).then(res => res)
 
 	}//end of deleteNumbers
-
-	/*section that shows numbers 1 - 39
-	the user has to choose 5 numbers that will
-	be added to the database*/
-	chooseNewNumbers() {
-		// let numbers = [];
-		let numbers = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9, "str", "box", "str/box", "comb", .50, 1.0, "day", "eve", "both", 2,3,4,5,6,7,8,9,10,2,3,4,5,6,7];
-
-
-		// for(var i = 1; i < 40; i++) {
-		// 	numbers.push(i);
-		// }
-
-		return numbers.map((el, index) => {
-			return (
-				<li 
-					className = "new-take-5-number-styles"
-					key = { index }
-					// onClick = { this.props.newNumber.bind(el) }
-				> { el } </li>
-			)
-		})
-	}//end of chooseNewNumbers
+	
 
 	chooseNewNumbersV2() {
 
