@@ -147,6 +147,9 @@ class QuickDraw extends Component {
 		//}
 	}
 
+	// Makes sure the values that will be sent to the
+	// POST REQUEST are in the same format that the
+	// databse expects them
 	parseValues() {
 
 		// array of values after the user has successfully

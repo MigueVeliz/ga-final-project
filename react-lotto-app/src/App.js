@@ -6,7 +6,7 @@ import TakeFive from './components/TakeFive'
 import Numbers from './components/Numbers'
 import QuickDraw from './components/QuickDraw'
 //import Win4 from './components/Win4'
-//import Pick10 from './components/Pick10'
+import Pick10 from './components/Pick10'
 import Navigation from './components/Navigation'
 // import Footer from './components/Footer'
 
@@ -22,7 +22,9 @@ class App extends Component {
       numbers: [], // ************ Numbers - Second Game
       numbersNewNumbers: [], // ** Numbers - Second Game
       quickDraw: [], // ********** Quick Draw - Third Game
-      quickDrawNewNumbers: [] // * Quick Draw - Third Game
+      quickDrawNewNumbers: [], // * Quick Draw - Third Game
+      pick10: [], // ************** Pick 10- Third Game
+      pick10NewNumbers: [] // **** Pick 10- Third Game
 
     }
   }
@@ -48,7 +50,7 @@ class App extends Component {
           <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">Numbers</p>
           </div>
-          <div className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">Pick10</p>
           </div>
           <div onClick = { this.getGameMode.bind(this) } className = "box">
@@ -88,6 +90,15 @@ class App extends Component {
         newQuickDrawNumbers = { this.state.quickDrawNewNumbers }
       />
     }
+    else if(gameMode === "Pick10") {
+      return <Pick10 
+        getGameMode = { this.getGameMode.bind(this) }
+        getPick10Data = { this.getPick10Data.bind(this) }
+        pick10Data = { this.state.pick10 }
+        getNewPick10Numbers = { this.newPick10Numbers.bind(this) }
+        newPick10Numbers = { this.state.pick10NewNumbers }
+      />
+    }
   }
 
 
@@ -109,7 +120,7 @@ class App extends Component {
 
   }
 
-  // Gets the Numbers Game Data
+  // Gets the QuickDraw Game Data
   getQuickDrawData( data ) {
     console.log("running getQuickDrawData[0] = " + data[0].spots) 
     this.setState({
@@ -118,6 +129,14 @@ class App extends Component {
 
   }
 
+  // Gets the getPick10Data Game Data
+  getPick10Data( data ) {
+    console.log("running getPick10Data[0] = " + data[0].numbers) 
+    this.setState({
+      pick10: data
+    })
+
+  }
 
   // Adds 5 numbers to the Take 5 arra
   newNumber(number) {
@@ -176,6 +195,19 @@ class App extends Component {
     })
 
     console.log(this.state.quickDrawNewNumbers)
+  }
+
+    // Adds NEW QuickDraw to the quickDrawNewNumbers array
+  newPick10Numbers(number) {
+    let n = this.state.pick10NewNumbers
+
+     n.push(parseInt(number.target.textContent, 10))
+
+    this.setState({
+      pick10NewNumbers: n
+    })
+
+    console.log(this.state.pick10NewNumbers)
   }
 
 

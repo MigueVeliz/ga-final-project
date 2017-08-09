@@ -391,10 +391,110 @@ p {
 }
 
 
+/*******************************************
+********************************************
+*************** P I C K  10 ****************
+********************************************
+*******************************************/
+
+.new-pick10-numbers-container {
+  width: 100vw;
+  background-color: #011627;
+  padding: 2px 0px;
+}
+
+.pick10-styles {
+  width: 7%;
+  background-color: #17BEBB;
+  padding: 4px;
+  border-radius: 30%;
+  display: inline-block;
+  font-size: 17px;
+  color: white;
+  margin: 6px 2px;
+}
+
+.pick10-numbers {
+  background-color: tomato;
+}
+.pick10-days {
+  background-color: #23B5D3;
+  margin: 6px 10px;
+}
+
+.pick10-numbers:hover,
+.pick10-days:hover {
+  background-color: #D90368;
+}
+
+.pick10-active {
+  background-color: #D90368;
+}
+
+
+.old-pick10-container {
+  width: 100vw;
+  /*height: 400px;*/
+  background-color: #070600;
+  padding: 3px 0px;
+}
+
+.old-pick10-list {
+  width: 80%;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  display: inline-block;
+  /*margin: 10px;*/
+}
+
+.pick10-old-number-styles {
+  width: 7%;
+  background-color: /*#253D5B*/;
+  padding: 4px;
+  border-radius: 20%;
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+  margin: 1px 2px;
+}
+
+.old-pick10-numbers {
+  width: 80%;
+  padding: 4px 0px;
+  font-size: 20px;
+  margin: 1px 1px;
+  border-radius: 10%;
+  background-color: tomato;
+  color: white;
+}
+
+.old-days {
+  background-color: #23B5D3;
+  font-size: 22px;
+  margin-left: 12px;
+}
+
+.pick10-delete-button {
+  background-color: #D81E5B;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  display: inline;
+  border-radius: 10%;
+}
 
 
 
 
+
+
+
+/*******************************************
+********************************************
+*************** F O O T E R ****************
+********************************************
+*******************************************/
 
 /*Footer*/
 .footer {
