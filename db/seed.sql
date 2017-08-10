@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS take_five;
 DROP TABLE IF EXISTS numbers;
 DROP TABLE IF EXISTS quick_draw;
 DROP TABLE IF EXISTS pick10;
+DROP TABLE IF EXISTS win4;
 
 CREATE TABLE take_five(
 	id SERIAL PRIMARY KEY,
@@ -54,6 +55,26 @@ CREATE TABLE pick10(
 INSERT INTO pick10( numbers, days ) VALUES
 ('1 34 54 66 77 33 23 67 56 44', 3),
 ('1 34 54 66 77 33 23 67 56 44', 6);
+
+
+CREATE TABLE win4(
+	id SERIAL PRIMARY KEY,
+	first_digit INTEGER,
+	second_digit INTEGER,
+	third_digit INTEGER,
+	fourth_digit INTEGER,
+	wager_type VARCHAR,
+	amount_per_wager DOUBLE PRECISION,
+	draw_time VARCHAR,
+	number_of_tickets INTEGER,
+	number_of_days INTEGER
+);
+
+INSERT INTO win4(first_digit, second_digit, third_digit, fourth_digit, wager_type, amount_per_wager, draw_time, number_of_tickets, number_of_days) VALUES
+(3, 5, 6, 8, 'str', .50, 'both', 4, 2),
+(6, 9, 1, 5, 'box', 1.00, 'eve', 2, 7);
+
+
 
 
 

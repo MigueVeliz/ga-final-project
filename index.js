@@ -24,6 +24,7 @@ app.use('/api', require('./controllers/take_five'));
 app.use('/api/numbers', require('./controllers/numbers'));
 app.use('/api/quick_draw', require('./controllers/quick_draw'));
 app.use('/api/pick10', require('./controllers/pick10'));
+app.use('/api/win4', require('./controllers/win4'));
 
 // 4. listen
 app.listen(PORT, () => console.log('Server is listening on port: ', PORT));
