@@ -15,9 +15,12 @@ class Win4 extends Component {
 		.then((responseJson) => {
 			console.log(responseJson)
 
+			responseJson.reverse()
+
 			this.props.getWin4Data(responseJson);
 		})
-	}//end of componentDidMount
+	}
+	//end of componentDidMount
 
 	// Old Pick 10 numbers are rendered in the page
 	displayData() {
@@ -48,6 +51,18 @@ class Win4 extends Component {
 	  previously saved by the user*/
 	deleteNumbers(id) {
 
+		this.props.deleteWin4Numbers(id)
+/*		let currentWin4Data = this.props.win4Data
+
+		for (var i = 0; i < currentWin4Data.length; i++)
+    		if (currentWin4Data[i].id && currentWin4Data[i].id === id) { 
+        	currentWin4Data.splice(i, 1);
+        	break;
+    	}*/
+
+    	// Deletes the object of numbers from the state
+		// this.props.getWin4Data(currentWin4Data);
+
 		console.log("deleting numbers widh ID:" + id ) 
 
 	    fetch('http://localhost:8080/api/win4/' + id, {
@@ -72,10 +87,6 @@ class Win4 extends Component {
 			number_of_tickets: [ 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			number_of_days: [ 2, 3, 4, 5, 6, 7]
 		}//end of data
-
-		/*let activeArr = this.props.newWin4Numbers
-
-		activeArr.shift()*/
 
 
 		container.push(data.first_digit.map((el, index) => {
@@ -188,13 +199,10 @@ class Win4 extends Component {
 			})
 		)
 
-
-
-
-
 		return container;
 
 	}// end of choooseNewQuickDrawNumbers
+
 
 	// Return true or false if number is in the 
 	// this.state.props.numbers
@@ -229,6 +237,7 @@ class Win4 extends Component {
 
 		let data = this.props.newWin4Numbers
 
+
 		fetch('http://localhost:8080/api/win4', {
 			method: 'POST',
 			headers: {
@@ -254,9 +263,32 @@ class Win4 extends Component {
 			console.log(body)
 		});
 
+		// Here I have to change the state of Previous
+		// numbers
+
+/*		let oldWin4Numbers = this.props.win4Data
+
+		let newArr = [
+			{
+				first_digit: data[0],
+				second_digit: data[1],
+				third_digit: data[2],
+				fourth_digit: data[3],
+				wager_type: data[4],
+				amount_per_wager: data[5],
+				draw_time: data[6],
+				number_of_tickets: data[7],
+				number_of_days: data[8]
+			}
+		]
+
+		oldWin4Numbers.push(newArr[0])
+		oldWin4Numbers.reverse()
+*/
+		//this.props.getWin4Data(oldWin4Numbers);
+
+
 	}
-
-
 
 	render() {
 		return (

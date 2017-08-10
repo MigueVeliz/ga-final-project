@@ -10,9 +10,6 @@ class GoHome extends Component {
 				<h2 className = "go-home">HOME</h2>
 			</div>
 
-
-
-			
 		)
 	}
 }

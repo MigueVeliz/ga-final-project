@@ -8,7 +8,7 @@ import QuickDraw from './components/QuickDraw'
 import Win4 from './components/Win4'
 import Pick10 from './components/Pick10'
 import Navigation from './components/Navigation'
-// import Footer from './components/Footer'
+import Footer from './components/Footer'
 
 
 class App extends Component {
@@ -108,8 +108,15 @@ class App extends Component {
         win4Data = { this.state.win4 }
         getNewWin4Numbers = { this.newWin4Numbers.bind(this) }
         newWin4Numbers = { this.state.win4NewNumbers }
+        deleteWin4Numbers = { this.deleteWin4Numbers.bind(this) }
       />
     }
+  }
+
+  deleteWin4Numbers(id) {
+    this.setState({
+      win4: this.state.win4.filter( win4 => win4.id !== id)
+    })
   }
 
 
@@ -122,7 +129,7 @@ class App extends Component {
 
   }
 
-    // Gets the Numbers Game Data
+  // Gets the Numbers Game Data
   getNumbersData( data ) {
     console.log("running getNumbersData[0] = " + data[0].first_digit) 
     this.setState({
@@ -160,9 +167,9 @@ class App extends Component {
 
   // Adds 5 numbers to the Take 5 arra
   newNumber(number) {
-     let n = this.state.takeFiveNumbers
+    let n = this.state.takeFiveNumbers
 
-     n.push(parseInt(number.target.textContent, 10))
+    n.push(parseInt(number.target.textContent, 10))
 
     this.setState({
       takeFiveNumbers: n
@@ -258,9 +265,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
-          <div>
+          <div className ="main-container">
             { this.renderAllGames() }
           </div>
+          <Footer />
       </div>
 
     );
