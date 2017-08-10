@@ -68,7 +68,8 @@ class Pick10 extends Component {
 		container.push(data.numbers.map((el, index) => {
 			return (
 				<li
-					className = {  this.active( this.props.newPick10Numbers, el) ? "pick10-styles pick10-numbers pick10-active" : "pick10-styles pick10-numbers" }
+					className = {  
+						this.active( this.props.newPick10Numbers, el) ? "pick10-styles pick10-numbers pick10-active" : "pick10-styles pick10-numbers" }
 					//className = "pick10-styles pick10-numbers"
 					key = { index }
 				 	onClick = { this.props.getNewPick10Numbers.bind(el) }

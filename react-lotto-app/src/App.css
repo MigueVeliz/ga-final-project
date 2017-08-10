@@ -484,7 +484,102 @@ p {
   border-radius: 10%;
 }
 
+/*******************************************
+********************************************
+***************** W I N 4 ******************
+********************************************
+*******************************************/
 
+.new-win4-numbers-container {
+  width: 100vw;
+  background-color: #011627;
+  padding: 2px 0px;
+}
+
+.win4-styles {
+  width: 7%;
+  background-color: #17BEBB;
+  padding: 4px;
+  border-radius: 30%;
+  display: inline-block;
+  font-size: 17px;
+  color: white;
+  margin: 6px 2px;
+}
+
+.win4-first-digit { background-color: #D90368; }
+.win4-second-digit { background-color: #D90368; }
+.win4-third-digit { background-color: #D90368; }
+.win4-fourth-digit { background-color: #D90368; }
+.win4-wager-type { background-color: #41EAD4; color: black; width: 9%; }
+.win4-amount-per-wager { background-color: #2E294E; margin: 6px 10px; }
+.win4-draw-time { background-color: #FF9F1C; width: 9%; }
+.win4-number-of-tickets { background-color: #4C9F70; margin: 6px 5px; }
+.win4-number-of-days { background-color: #456990; margin: 6px 19px; }
+
+
+.win4-first-digit:hover,
+.win4-second-digit:hover,
+.win4-third-digit:hover,
+.win4-fourth-digit:hover,
+.win4-wager-type:hover,
+.win4-amount-per-wager:hover,
+.win4-draw-time:hover,
+.win4-number-of-tickets:hover,
+.win4-number-of-days:hover {
+  background-color: #F5F2B8;
+  color: black;
+}
+
+.win4-active {
+  background-color: #F5F2B8;
+  color: black;
+}
+
+
+/* Win 4 Old Number Styles */
+.old-win4-container {
+  width: 100vw;
+  /*height: 400px;*/
+  background-color: #070600;
+  padding: 3px 0px;
+}
+
+.old-win4-list {
+  width: 80%;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  display: inline-block;
+  /*margin: 10px;*/
+}
+
+.win4-old-number-styles {
+  width: 7%;
+  background-color: /*#253D5B*/;
+  padding: 4px;
+  border-radius: 20%;
+  display: inline-block;
+  font-size: 18px;
+  color: white;
+  margin: 1px 2px;
+}
+
+.old-digits { background-color: #D90368; }
+.old-wager_type { background-color: #41EAD4; color: black; }
+.old-amount-per-wager { background-color: #2E294E; }
+.old-draw-time { background-color: #FF9F1C; width: 9%;}
+.old-number-of-tickets { background-color: #4C9F70; }
+.old-number-of-days { background-color: #456990; }
+
+.win4-delete-button {
+  background-color: #D62839;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  display: inline;
+  border-radius: 10%;
+}
 
 
 

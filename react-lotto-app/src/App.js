@@ -5,7 +5,7 @@ import './App.css';
 import TakeFive from './components/TakeFive'
 import Numbers from './components/Numbers'
 import QuickDraw from './components/QuickDraw'
-//import Win4 from './components/Win4'
+import Win4 from './components/Win4'
 import Pick10 from './components/Pick10'
 import Navigation from './components/Navigation'
 // import Footer from './components/Footer'
@@ -24,7 +24,9 @@ class App extends Component {
       quickDraw: [], // ********** Quick Draw - Third Game
       quickDrawNewNumbers: [], // * Quick Draw - Third Game
       pick10: [], // ************** Pick 10- Third Game
-      pick10NewNumbers: [] // **** Pick 10- Third Game
+      pick10NewNumbers: [], // **** Pick 10- Third Game
+      win4: [], // ************** Win 4- Fourth Game
+      win4NewNumbers: [] // **** Win 4- Fourth Game
 
     }
   }
@@ -56,7 +58,7 @@ class App extends Component {
           <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">QuickDraw</p>
           </div>
-          <div className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">Win4</p>
           </div>
         </div>
@@ -99,6 +101,15 @@ class App extends Component {
         newPick10Numbers = { this.state.pick10NewNumbers }
       />
     }
+    else if (gameMode === "Win4") {
+      return <Win4 
+        getGameMode = { this.getGameMode.bind(this) }
+        getWin4Data = { this.getWin4Data.bind(this) }
+        win4Data = { this.state.win4 }
+        getNewWin4Numbers = { this.newWin4Numbers.bind(this) }
+        newWin4Numbers = { this.state.win4NewNumbers }
+      />
+    }
   }
 
 
@@ -134,6 +145,15 @@ class App extends Component {
     console.log("running getPick10Data[0] = " + data[0].numbers) 
     this.setState({
       pick10: data
+    })
+
+  }
+
+  // Gets the win4 Game Data
+  getWin4Data( data ) {
+    console.log("running getWin4Data[0] = " + data[0].first_digit) 
+    this.setState({
+      win4: data
     })
 
   }
@@ -208,6 +228,29 @@ class App extends Component {
     })
 
     console.log(this.state.pick10NewNumbers)
+  }
+
+  // Adds NEW Win4 to the win4NewNumbers array
+  newWin4Numbers(number) {
+    let n = this.state.win4NewNumbers
+    let num = number.target.textContent
+
+    console.log(`numer --> ` + num )
+
+    if (isNaN(num)) {
+        console.log("its not a number")
+        n.push(num)
+
+     } else {
+        console.log("its  a number" + num)
+        n.push(parseInt(num, 10))
+     }
+
+    this.setState({
+      win4NewNumbers: n
+    })
+
+    console.log(this.state.win4NewNumbers)
   }
 
 
