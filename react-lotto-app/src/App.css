@@ -245,7 +245,7 @@ p {
 
 .new-take-5-number-styles {
   width: 7%;
-  background-color: #B6244F;
+  background-color: #4C2C72;
   padding: 6px;
   border-radius: 100%;
   display: inline-block;
@@ -266,15 +266,15 @@ p {
   display: inline-block;
   font-size: 19px;
   margin: 4px;
-  background-color: #E8C547;
+  background-color: #4C2C72;
   color: black;
 }
 
 .take-5-number-styles {
   width: 10%;
-  background-color: #9DC4B5;
+  background-color: #4C2C72;
   padding: 6px;
-  border-radius: 100%;
+  border-radius: 10%;
   display: inline-block;
   font-size: 25px;
   color: white;
@@ -298,7 +298,7 @@ p {
 
 .old-numbers {
   width: 100vw;
-  background-color: #445E93;
+  /*background-color: #445E93;*/
   padding: 3px 0px;
 }
 
@@ -355,36 +355,36 @@ p {
 }
 
 .wager-type-styles{
-  width: 12%;
+  width: 11%;
   background-color: #474973;
   padding: 9px 2px;
   border-radius: 100%;
   display: inline-block;
   font-size: 16px;
   color: white;
-  margin: 5px 25px;
+  margin: 5px 3px;
 }
 
 .amount-per-wager-styles {
-  width: 12%;
+  width: 6%;
   background-color: #0D0C1D;
   padding: 9px 2px;
   border-radius: 100%;
   display: inline-block;
   font-size: 16px;
   color: white;
-  margin: 10px 80px;
+  margin: 10px 2px;
 }
 
 .draw-time-styles {
-  width: 12%;
+  width: 8%;
   background-color: #F0E100;
   padding: 9px 2px;
   border-radius: 100%;
   display: inline-block;
   font-size: 16px;
   color: black;
-  margin: 10px 45px;
+  margin: 10px 2px;
 }
 
 .number_of_tickets-styles {
@@ -415,7 +415,8 @@ p {
 .draw-time-styles:hover,
 .number_of_tickets-styles:hover,
 .number-of-days-styles:hover {
-  background-color: #0075C4;
+  background-color: #9CE37D;
+  color: black;
 }
 
 .selected-number-numbers {
@@ -456,7 +457,7 @@ p {
   margin: 1px 5px;
 }
 
-.wager_type { background-color: yellow; color: black; }
+.wager_type { background-color: yellow; width: 12%; color: black; }
 .amount_per_wager { background-color: #29335C }
 .draw_time { background-color: #E4572E }
 .number_of_tickets { background-color: #F3A712 }
