@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
+import axios from 'axios'
+
+import Cookies from './helpers/Cookies'
+import UserAuth from './components/UserAuth'
+
 import TakeFive from './components/TakeFive'
 import Numbers from './components/Numbers'
 import QuickDraw from './components/QuickDraw'
@@ -16,6 +21,9 @@ class App extends Component {
     super()
 
     this.state = {
+      user: false,
+      mode: 'loading',
+      url: 'http://localhost:8080',
       gameMode: 'HOME', // ******* Take 5 - First Game
       takeFive: [], // *********** Take 5 - First Game
       takeFiveNumbers: [], // **** Take 5 - First Game
@@ -30,6 +38,86 @@ class App extends Component {
 
     }
   }
+
+  // once the component mounted, we want to initialize our user
+  componentDidMount(){
+    this.initUser();
+  }
+
+
+  // method to initialize our user
+  initUser(){
+    // get the token from the cookie
+    const token = Cookies.get('token');
+
+    // if there is a token
+    if(token && token !== ''){
+      // send a request to our API to validate the user
+      axios.get(`${this.state.url}/users/validate`, {
+        // include the token as a parameter
+        params: {auth_token: token}})
+        .then(res => { // the response will be the user
+          // set the user in the state, and change the mode to content
+          this.setState({user: res.data, mode: 'content'});
+        })
+        .catch(err => { // if there is an error
+          Cookies.set('token', '') // take away the cookie
+          // change the state so that there is no user and render the auth
+          this.setState({user: false, mode: 'auth'});
+        })
+    } else { // if there is no token
+      // we should render the auth forms
+      this.setState({mode: 'auth'});
+    }
+  }
+
+  // method to set a user
+  setUser(user){
+    // set a cookie with the user's token
+    Cookies.set('token', user.token);
+    // set state to have the user and the mode to content
+    this.setState({user: user, mode: 'content'});
+  }
+
+  // method to log out
+  logout(){
+    // take away the cookie
+    Cookies.set('token', '');
+    // remove the user and set the mode to auth
+    this.setState({user: false, mode: 'auth'});
+  }
+
+   // method that renders the view based on the mode in the state
+  renderView(){
+    if(this.state.mode === 'loading'){
+      return(
+        <div className="loading">
+          <img src="https://s-media-cache-ak0.pinimg.com/originals/8b/a8/ce/8ba8ce24910d7b2f4c147359a82d50ef.gif"
+            alt="loading" />
+        </div>
+      )
+    } else if(this.state.mode === 'auth') {
+      return (
+        <UserAuth
+          setUser={this.setUser.bind(this)}
+          url={this.state.url}
+        />
+      )
+    } else{
+      return this.renderAllGames()
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
 
   getGameMode(mode) {
     console.log(mode.currentTarget.textContent)
@@ -46,6 +134,7 @@ class App extends Component {
     if( gameMode === "HOME") {
       return (
         <div className = "container">
+          { this.state.user.name }
           <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">TakeFive</p>
           </div>
@@ -103,6 +192,7 @@ class App extends Component {
     }
     else if (gameMode === "Win4") {
       return <Win4 
+        logout = { this.logout.bind(this) } user = { this.state.user }
         getGameMode = { this.getGameMode.bind(this) }
         getWin4Data = { this.getWin4Data.bind(this) }
         win4Data = { this.state.win4 }
@@ -266,7 +356,7 @@ class App extends Component {
       <div className="App">
         <Navigation />
           <div className ="main-container">
-            { this.renderAllGames() }
+            { this.renderView()  }
           </div>
           <Footer />
       </div>

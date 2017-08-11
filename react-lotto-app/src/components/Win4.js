@@ -293,6 +293,12 @@ class Win4 extends Component {
 	render() {
 		return (
 			<div className = "numbers">
+
+				<h2>Welcome, {this.props.user.name}</h2>
+				<p>Your email address is: {this.props.user.email}</p>
+     			<p>You have a cookie set to: {this.props.user.token}</p>
+     			<button onClick={this.props.logout}>Click here to log out!</button>
+
 				<GoHome getGameMode = { this.props.getGameMode } />
 
 				<div className = "new-win4-numbers-container">

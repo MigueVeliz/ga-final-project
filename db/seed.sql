@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS quick_draw;
 DROP TABLE IF EXISTS pick10;
 DROP TABLE IF EXISTS win4;
 
+DROP TABLE If EXISTS users;
+
 CREATE TABLE take_five(
 	id SERIAL PRIMARY KEY,
 	first_number INTEGER,
@@ -75,10 +77,13 @@ INSERT INTO win4(first_digit, second_digit, third_digit, fourth_digit, wager_typ
 (6, 9, 1, 5, 'box', 1.00, 'eve', 2, 7);
 
 
-
-
-
-
+CREATE TABLE users (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  email VARCHAR NOT NULL UNIQUE,
+  password_digest VARCHAR NOT NULL,
+  token VARCHAR NOT NULL
+);
 
 
 
