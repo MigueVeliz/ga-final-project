@@ -27,7 +27,7 @@ class Win4 extends Component {
 
 	// Old Pick 10 numbers are rendered in the page
 	displayData() {
-		if( !this.props.win4Data ) {
+		if( this.props.win4Data.length < 1 ) {
 			return (
 				<h1 className = "no-data">No Data Available</h1>
 			)
@@ -272,7 +272,7 @@ class Win4 extends Component {
 
 	render() {
 		return (
-			<div className = "numbers">
+			<div>
 
 				<GoHome getGameMode = { this.props.getGameMode } />
 

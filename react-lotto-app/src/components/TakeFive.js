@@ -23,7 +23,7 @@ class TakeFive extends Component {
 
 	// Old Take 5 numbers are rendered in the page
 	displayData() {
-		if( this.props.win4Data ) {
+		if( this.props.takeFiveData.length < 1 ) {
 			return (
 				<h1 className = "no-data">No Data Available</h1>
 			)

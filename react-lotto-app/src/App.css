@@ -10,10 +10,10 @@
 }
 
 body, html{
-  background-color: #FAFAFA;
+  /*background-color: #FAFAFA;*/
 }
 .App {
-  /*text-align: center;*/
+  text-align: center;
 }
 
 .auth-form, .content{
@@ -62,16 +62,16 @@ button{
   background-color: transparent;
   color: teal;
   font-size: 1.2em;
-  border: 2px solid transparent;
-  padding: 6px 0;
-  margin: 0 8px;
+  /*border: 2px solid transparent;*/
+  /*padding: 6px 0;*/
+  /*margin: 0 8px;*/
   cursor: pointer;
   transition: all .5s ease;
   outline: 0px solid transparent;
 }
 
 button:hover{
-  border-bottom: 2px solid teal;
+  border-bottom: 2px solid #95E06C;
 }
 
 .loading{
@@ -95,7 +95,8 @@ button:hover{
 .App {
   /*text-align: center;*/
   /*margin: 0;*/
-  background-color: #587291;
+  /*background-color: #587291;*/
+  background-color: #2E4756;
   /*height: 100vh;*/
 }
 
@@ -118,8 +119,9 @@ p {
 .navigation {
   height: 5vh;
   width: 100vw;
-  background-color: #2F394D;
-  text-align: center;
+  /*background-color: #2F394D; */
+  background-color: #131112;
+  /*text-align: center;*/
   /*display: block;*/
 }
 
@@ -127,24 +129,45 @@ p {
   font-size: 22px;
   color: white;
   font-weight: bold;
-  /*text-align: center;*/
+  text-align: center;
   margin: 0 auto;
   padding-top: 3px;
   display: inline-block;
 }
 
 .logout-button {
-  background-color: black;
+  background-color: #0A2342;
   font-size: 13px;
   position: absolute;
-  float: right;
-  margin-bottom: 10px;
+  /*float: right;*/
+  top: 0;
+  right: 0;
+  /*margin-bottom: 10px;*/
   display: inline-block;
+  height: 5vh;
+  width: 15%;
+  color: white;
+  border: transparent;
+}
+
+.home-button {
+  background-color: #0A2342;
+  font-size: 13px;
+  position: absolute;
+  /*float: right;*/
+  top: 0;
+  left: 0;
+  /*margin-bottom: 10px;*/
+  display: inline-block;
+  height: 5vh;
+  width: 15%;
+  color: white;
+  border: transparent;
 }
 
 .logout-button:hover {
-  background-color: crimson;
-  color: black;
+  background-color: #1D1A05;
+  color: white;
 }
 
 .welcome-container {
@@ -153,6 +176,7 @@ p {
   margin: 0 auto;
   padding: 10px 1px;
   margin-bottom: 10px;
+  /*background-color: #000022;*/
 }
 
 .welcome-container p {
@@ -169,20 +193,28 @@ p {
 
 .main-container {
   height: 100%;
+  /*background-color: #040F16;*/
 }
 
 .container {
   margin-top: 30px;
+  /*background-color: #000022;*/
 }
 
 .box {
   width: 40vw;
   height: 20vh;
-  background-color: #2F97C1;
+  /*background-color: #2F97C1;*/
   color: white;
   display: inline-block;
   margin: 10px 10px;
 }
+
+.take5 { background-color: #95E06C; }
+.numbers { background-color: #CA3C25; }
+.pick10 { background-color: #08A4BD; }
+.quick-draw { background-color: #FEB95F; }
+.win4 { background-color: #961D4E; }
 
 .game-type {
   /*height: 100px;*/
@@ -739,9 +771,10 @@ p {
 *******************************************/
 
 .footer {
-  background-color: #2F394D;
-  margin-top: 30px;
-  padding: 50px 0px;
+  /*background-color: #2F394D;*/
+  background-color: #131112;
+  margin-top: 40px;
+  padding: 30px 0px;
   /*position: relative;*/
 
 

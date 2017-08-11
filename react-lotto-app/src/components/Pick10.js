@@ -25,7 +25,7 @@ class Pick10 extends Component {
 
 	// Old Pick 10 numbers are rendered in the page
 	displayData() {
-		if( this.props.pick10Data ) {
+		if( this.props.pick10Data.length < 1 ) {
 			return (
 				<h1 className = "no-data">No Data Available</h1>
 			)
@@ -181,7 +181,7 @@ class Pick10 extends Component {
 
 	render() {
 		return (
-			<div className = "numbers">
+			<div>
 				<GoHome getGameMode = { this.props.getGameMode } />
 
 

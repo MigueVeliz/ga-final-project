@@ -235,7 +235,7 @@ class Numbers extends Component {
 
 	render() {
 		return (
-			<div className = "numbers">
+			<div >
 				<GoHome getGameMode = { this.props.getGameMode } />
 
 				<div className = "new-numbers">

@@ -24,7 +24,7 @@ class QuickDraw extends Component {
 
 	// Old QuickDraw numbers are rendered in the page
 	displayData() {
-		if( this.props.win4Data ) {
+		if( this.props.quickDrawData.length < 1 ) {
 			return (
 				<h1 className = "no-data">No Data Available</h1>
 			)
@@ -237,7 +237,7 @@ class QuickDraw extends Component {
 
 	render() {
 		return (
-			<div className = "numbers">
+			<div>
 				<GoHome getGameMode = { this.props.getGameMode } />
 
 				<div className = "new-quick-draw-numbers">

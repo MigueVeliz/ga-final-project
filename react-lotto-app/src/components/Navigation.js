@@ -6,6 +6,7 @@ class Navigation extends Component {
 			<div className = "navigation">
 				<p className = "title">NYC Plays</p>
      			<button className = "logout-button" onClick={this.props.logout}>Log Out</button>
+     			<button className = "home-button" onClick={ this.props.getGameMode }>Home</button>
 			</div>
 		)
 	}

@@ -131,26 +131,26 @@ class App extends Component {
 
     let gameMode = this.state.gameMode
 
-    if( gameMode === "HOME") {
+    if( gameMode.toUpperCase() === "HOME" ) {
       return (
         <div className = "container">
           <div className = "welcome-container">
             <p>Welcome: { this.state.user.name }!</p>
           </div>
           
-          <div onClick = { this.getGameMode.bind(this) } className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box take5">
             <p className = "game-type">TakeFive</p>
           </div>
-          <div onClick = { this.getGameMode.bind(this) } className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box numbers">
             <p className = "game-type">Numbers</p>
           </div>
-          <div onClick = { this.getGameMode.bind(this) } className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box pick10">
             <p className = "game-type">Pick10</p>
           </div>
-          <div onClick = { this.getGameMode.bind(this) } className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box quick-draw">
             <p className = "game-type">QuickDraw</p>
           </div>
-          <div onClick = { this.getGameMode.bind(this) } className = "box">
+          <div onClick = { this.getGameMode.bind(this) } className = "box win4">
             <p className = "game-type">Win4</p>
           </div>
         </div>
@@ -361,7 +361,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navigation logout = { this.logout.bind(this) } user = { this.state.user }/>
+        <Navigation getGameMode = { this.getGameMode.bind(this) } logout = { this.logout.bind(this) } user = { this.state.user }/>
           <div className ="main-container">
             { this.renderView()  }
           </div>
