@@ -2,12 +2,12 @@ const db = require('../db/config');
 
 const TakeFive = {
 
-	findAll: () => db.manyOrNone('SELECT * FROM take_five'),
+	findAll: (user_id) => db.manyOrNone('SELECT * FROM take_five WHERE user_id = $1', [user_id]),
 
-	create: (first_number, second_number, third_number, fourth_number, fifth_number) => {
+	create: (user_id, first_number, second_number, third_number, fourth_number, fifth_number) => {
 		return db.one(
-			`INSERT INTO take_five (first_number, second_number, third_number, fourth_number, fifth_number) VALUES ($1, $2, $3, $4, $5) returning id`,
-			[first_number, second_number, third_number, fourth_number, fifth_number]
+			`INSERT INTO take_five (user_id, first_number, second_number, third_number, fourth_number, fifth_number) VALUES ($1, $2, $3, $4, $5, $6) returning id`,
+			[user_id, first_number, second_number, third_number, fourth_number, fifth_number]
 		);
 	},
 

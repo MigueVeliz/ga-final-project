@@ -8,7 +8,10 @@ class Pick10 extends Component {
 	/* Game information is loaded when
 	this component is mounted */
 	componentDidMount() {
-		fetch('http://localhost:8080/api/pick10')
+
+		let id = this.props.user.id
+
+		fetch('http://localhost:8080/api/pick10/' + id)
 		.then((response) => {
 			return response.json()
 		})
@@ -22,20 +25,27 @@ class Pick10 extends Component {
 
 	// Old Pick 10 numbers are rendered in the page
 	displayData() {
-		return this.props.pick10Data.map((el, index) => {
+		if( this.props.pick10Data ) {
 			return (
-				<div key = { index } >
-					<ul className = "old-pick10-list">
-						<li className = "pick10-old-number-styles old-pick10-numbers"> { el.numbers } </li>
-						<li className = "pick10-old-number-styles old-days"> { el.days } </li>
-					</ul>
-					<div onClick = { () => { this.deleteNumbers(el.id) } } 
-						className = "pick10-delete-button">
-						Delete
-					</div>
-				</div>
+				<h1 className = "no-data">No Data Available</h1>
 			)
-		})
+		}
+		else {
+			return this.props.pick10Data.map((el, index) => {
+				return (
+					<div key = { index } >
+						<ul className = "old-pick10-list">
+							<li className = "pick10-old-number-styles old-pick10-numbers"> { el.numbers } </li>
+							<li className = "pick10-old-number-styles old-days"> { el.days } </li>
+						</ul>
+						<div onClick = { () => { this.deleteNumbers(el.id) } } 
+							className = "pick10-delete-button">
+							Delete
+						</div>
+					</div>
+				)
+			})
+		}
 	}//end of displayData
 
 	/*Deletes a row of Quick Draw Numbers 
@@ -144,6 +154,8 @@ class Pick10 extends Component {
 	addNewPick10Numbers( numbersString, days ) {
 		console.log("Running addNewPick10Numbers!")
 
+		let user_id =  this.props.user.id
+
 		fetch('http://localhost:8080/api/pick10', {
 			method: 'POST',
 			headers: {
@@ -151,6 +163,7 @@ class Pick10 extends Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				user_id: user_id,
 				numbers: numbersString,
 				days: days,
 			})

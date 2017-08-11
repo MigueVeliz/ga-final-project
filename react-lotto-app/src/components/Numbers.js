@@ -8,7 +8,10 @@ class Numbers extends Component {
 	/*game information is loaded when
 	this component is mounted*/
 	componentDidMount() {
-		fetch('http://localhost:8080/api/numbers')
+		
+		let id = this.props.user.id
+
+		fetch('http://localhost:8080/api/numbers/' + id)
 		.then((response) => {
 			return response.json()
 		})
@@ -21,26 +24,33 @@ class Numbers extends Component {
 
 	// Old Take 5 numbers are rendered in the page
 	displayData() {
-		return this.props.numbersData.map((el, index) => {
+		if( this.props.win4Data ) {
 			return (
-				<div key = { index } >
-					<ul className = "old-numbers-list">
-						<li className = "numbers-old-number-styles"> { el.first_digit } </li>
-						<li className = "numbers-old-number-styles"> { el.second_digit } </li>
-						<li className = "numbers-old-number-styles"> { el.third_digit } </li>
-						<li className = "numbers-old-number-styles wager_type"> { el.wager_type } </li>
-						<li className = "numbers-old-number-styles amount_per_wager"> { el.amount_per_wager } </li>
-						<li className = "numbers-old-number-styles draw_time"> { el.draw_time } </li>
-						<li className = "numbers-old-number-styles number_of_tickets"> { el.number_of_tickets } </li>
-						<li className = "numbers-old-number-styles number_of_days"> { el.number_of_days } </li>
-					</ul>
-					<div onClick = { () => { this.deleteNumbers(el.id) } } 
-						className = "numbers-delete-button">
-						Delete
-					</div>
-				</div>
+				<h1 className = "no-data">No Data Available</h1>
 			)
-		})
+		}
+		else {
+			return this.props.numbersData.map((el, index) => {
+				return (
+					<div key = { index } >
+						<ul className = "old-numbers-list">
+							<li className = "numbers-old-number-styles"> { el.first_digit } </li>
+							<li className = "numbers-old-number-styles"> { el.second_digit } </li>
+							<li className = "numbers-old-number-styles"> { el.third_digit } </li>
+							<li className = "numbers-old-number-styles wager_type"> { el.wager_type } </li>
+							<li className = "numbers-old-number-styles amount_per_wager"> { el.amount_per_wager } </li>
+							<li className = "numbers-old-number-styles draw_time"> { el.draw_time } </li>
+							<li className = "numbers-old-number-styles number_of_tickets"> { el.number_of_tickets } </li>
+							<li className = "numbers-old-number-styles number_of_days"> { el.number_of_days } </li>
+						</ul>
+						<div onClick = { () => { this.deleteNumbers(el.id) } } 
+							className = "numbers-delete-button">
+							Delete
+						</div>
+					</div>
+				)
+			})
+		}
 	}//end of displayData
 
 	/*Deletes a row of Numbers previously saved 
@@ -175,6 +185,7 @@ class Numbers extends Component {
 		console.log("Running addNewNumbers!")
 
 		let numbers = this.props.newNumbers
+		let user_id =  this.props.user.id
 
 		console.log("numbers")
 
@@ -186,6 +197,7 @@ class Numbers extends Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				user_id: user_id,
 				first_digit: numbers[0],
 				second_digit: numbers[1],
 				third_digit: numbers[2],
@@ -193,7 +205,7 @@ class Numbers extends Component {
 				amount_per_wager: numbers[4],
 				draw_time: numbers[5],
 				number_of_tickets: numbers[6],
-				number_of_days: numbers[7],
+				number_of_days: numbers[7]
 			})
 		})
 		.then((response) => {

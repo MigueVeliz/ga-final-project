@@ -2,12 +2,12 @@ const db = require('../db/config');
 
 const Pick10 = {
 
-	findAll: () => db.manyOrNone('SELECT * FROM pick10'),
+	findAll: (user_id) => db.manyOrNone('SELECT * FROM pick10 WHERE user_id = $1', [user_id]),
 
-	create: (numbers, days) => {
+	create: (user_id, numbers, days) => {
 		return db.one(
-			`INSERT INTO pick10 (numbers, days) VALUES ($1, $2) returning id`,
-			[numbers, days]
+			`INSERT INTO pick10 (user_id, numbers, days) VALUES ($1, $2, $3) returning id`,
+			[user_id, numbers, days]
 		);
 	},
 

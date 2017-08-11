@@ -3,9 +3,9 @@ const router = require('express').Router(),
 
 	router.post('/', (req, res) => {
 		console.log("Posting This:", req.body)
-		const {first_number, second_number, third_number, fourth_number, fifth_number} = req.body
+		const { user_id, first_number, second_number, third_number, fourth_number, fifth_number} = req.body
 
-		TakeFive.create( first_number, second_number, third_number, fourth_number, fifth_number)
+		TakeFive.create( user_id, first_number, second_number, third_number, fourth_number, fifth_number)
 			.then((data) => {
 				res.json(data);
 			})
@@ -13,8 +13,11 @@ const router = require('express').Router(),
 	});
 
 
-	router.get('/', (req, res) => {
-		TakeFive.findAll()
+	router.get('/:id', (req, res) => {
+		
+		const user_id = req.params.id
+
+		TakeFive.findAll( user_id )
 			.then((data) => {
 				res.json(data);
 			})

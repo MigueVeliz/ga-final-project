@@ -8,7 +8,9 @@ class Win4 extends Component {
 	/* Game information is loaded when
 	this component is mounted */
 	componentDidMount() {
+		
 		let id = this.props.user.id
+
 		fetch('http://localhost:8080/api/win4/' + id)
 		.then((response) => {
 			return response.json()
@@ -60,16 +62,6 @@ class Win4 extends Component {
 	deleteNumbers(id) {
 
 		this.props.deleteWin4Numbers(id)
-/*		let currentWin4Data = this.props.win4Data
-
-		for (var i = 0; i < currentWin4Data.length; i++)
-    		if (currentWin4Data[i].id && currentWin4Data[i].id === id) { 
-        	currentWin4Data.splice(i, 1);
-        	break;
-    	}*/
-
-    	// Deletes the object of numbers from the state
-		// this.props.getWin4Data(currentWin4Data);
 
 		console.log("deleting numbers widh ID:" + id ) 
 
@@ -273,32 +265,10 @@ class Win4 extends Component {
 			console.log(body)
 		});
 
-		// Here I have to change the state of Previous
-		// numbers
-
-/*		let oldWin4Numbers = this.props.win4Data
-
-		let newArr = [
-			{
-				first_digit: data[0],
-				second_digit: data[1],
-				third_digit: data[2],
-				fourth_digit: data[3],
-				wager_type: data[4],
-				amount_per_wager: data[5],
-				draw_time: data[6],
-				number_of_tickets: data[7],
-				number_of_days: data[8]
-			}
-		]
-
-		oldWin4Numbers.push(newArr[0])
-		oldWin4Numbers.reverse()
-*/
-		//this.props.getWin4Data(oldWin4Numbers);
-
-
 	}
+
+
+
 
 	render() {
 		return (

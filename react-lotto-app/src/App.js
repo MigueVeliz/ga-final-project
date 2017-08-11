@@ -158,7 +158,8 @@ class App extends Component {
         )
     }
     else if (gameMode === "TakeFive") {
-      return <TakeFive 
+      return <TakeFive
+        user = { this.state.user }
         getGameMode = { this.getGameMode.bind(this) }
         getTake5Data = { this.getTake5Data.bind(this) } 
         takeFiveData = { this.state.takeFive }
@@ -168,6 +169,7 @@ class App extends Component {
     }
     else if(gameMode === "Numbers") {
       return <Numbers 
+        user = { this.state.user }
         getGameMode = { this.getGameMode.bind(this) }
         getNumbersData = { this.getNumbersData.bind(this) }
         numbersData = { this.state.numbers }
@@ -177,6 +179,7 @@ class App extends Component {
     }
     else if (gameMode === "QuickDraw") {
       return <QuickDraw 
+        user = { this.state.user }
         getGameMode = { this.getGameMode.bind(this) }
         getQuickDrawData = { this.getQuickDrawData.bind(this) }
         quickDrawData = { this.state.quickDraw }
@@ -186,6 +189,7 @@ class App extends Component {
     }
     else if(gameMode === "Pick10") {
       return <Pick10 
+        user = { this.state.user }
         getGameMode = { this.getGameMode.bind(this) }
         getPick10Data = { this.getPick10Data.bind(this) }
         pick10Data = { this.state.pick10 }
@@ -195,7 +199,7 @@ class App extends Component {
     }
     else if (gameMode === "Win4") {
       return <Win4 
-        logout = { this.logout.bind(this) } user = { this.state.user }
+        user = { this.state.user }
         getGameMode = { this.getGameMode.bind(this) }
         getWin4Data = { this.getWin4Data.bind(this) }
         win4Data = { this.state.win4 }
@@ -215,7 +219,7 @@ class App extends Component {
 
   // Gets the Take 5 Game Data
   getTake5Data( data ) {
-    console.log("running getTake5Data " + data[0].first_number) 
+    // console.log("running getTake5Data " + data[0].first_number) 
     this.setState({
       takeFive: data
     })
@@ -224,7 +228,7 @@ class App extends Component {
 
   // Gets the Numbers Game Data
   getNumbersData( data ) {
-    console.log("running getNumbersData[0] = " + data[0].first_digit) 
+    // console.log("running getNumbersData[0] = " + data[0].first_digit) 
     this.setState({
       numbers: data
     })
@@ -233,7 +237,7 @@ class App extends Component {
 
   // Gets the QuickDraw Game Data
   getQuickDrawData( data ) {
-    console.log("running getQuickDrawData[0] = " + data[0].spots) 
+    // console.log("running getQuickDrawData[0] = " + data[0].spots) 
     this.setState({
       quickDraw: data
     })
@@ -242,7 +246,7 @@ class App extends Component {
 
   // Gets the getPick10Data Game Data
   getPick10Data( data ) {
-    console.log("running getPick10Data[0] = " + data[0].numbers) 
+    // console.log("running getPick10Data[0] = " + data[0].numbers) 
     this.setState({
       pick10: data
     })
@@ -357,7 +361,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navigation />
+        <Navigation logout = { this.logout.bind(this) } user = { this.state.user }/>
           <div className ="main-container">
             { this.renderView()  }
           </div>

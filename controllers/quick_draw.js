@@ -3,9 +3,9 @@ const router = require('express').Router(),
 
 	router.post('/', (req, res) => {
 		console.log("Posting This:", req.body)
-		const {spots, numbers, how_much_per_draw, quick_draw_extra, consecutive_draws} = req.body
+		const { user_id, spots, numbers, how_much_per_draw, quick_draw_extra, consecutive_draws} = req.body
 
-		QuickDraw.create(spots, numbers, how_much_per_draw, quick_draw_extra, consecutive_draws)
+		QuickDraw.create( user_id, spots, numbers, how_much_per_draw, quick_draw_extra, consecutive_draws)
 			.then((data) => {
 				res.json(data);
 			})
@@ -13,8 +13,11 @@ const router = require('express').Router(),
 	});
 
 
-	router.get('/', (req, res) => {
-		QuickDraw.findAll()
+	router.get('/:id', (req, res) => {
+		
+		const user_id = req.params.id
+
+		QuickDraw.findAll( user_id )
 			.then((data) => {
 				res.json(data);
 			})

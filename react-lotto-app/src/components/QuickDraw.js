@@ -8,7 +8,10 @@ class QuickDraw extends Component {
 	/* Game information is loaded when
 	this component is mounted */
 	componentDidMount() {
-		fetch('http://localhost:8080/api/quick_draw')
+
+		let id = this.props.user.id
+
+		fetch('http://localhost:8080/api/quick_draw/' + id)
 		.then((response) => {
 			return response.json()
 		})
@@ -21,23 +24,30 @@ class QuickDraw extends Component {
 
 	// Old QuickDraw numbers are rendered in the page
 	displayData() {
-		return this.props.quickDrawData.map((el, index) => {
+		if( this.props.win4Data ) {
 			return (
-				<div key = { index } >
-					<ul className = "old-quick-draw-list">
-						<li className = "quick-draw-old-number-styles old-spots"> { el.spots } </li>
-						<li className = "quick-draw-old-number-styles quick-draw-numbers old-numbers"> { el.numbers } </li>
-						<li className = "quick-draw-old-number-styles old-how-much-per-game"> { el.how_much_per_draw } </li>
-						<li className = "quick-draw-old-number-styles old-quick-draw-extra"> { el.quick_draw_extra } </li>
-						<li className = "quick-draw-old-number-styles old-consecutive-number"> { el.consecutive_draws } </li>
-					</ul>
-					<div onClick = { () => { this.deleteNumbers(el.id) } } 
-						className = "quick-draw-delete-button">
-						Delete
-					</div>
-				</div>
+				<h1 className = "no-data">No Data Available</h1>
 			)
-		})
+		}
+		else {
+			return this.props.quickDrawData.map((el, index) => {
+				return (
+					<div key = { index } >
+						<ul className = "old-quick-draw-list">
+							<li className = "quick-draw-old-number-styles old-spots"> { el.spots } </li>
+							<li className = "quick-draw-old-number-styles quick-draw-numbers old-numbers"> { el.numbers } </li>
+							<li className = "quick-draw-old-number-styles old-how-much-per-game"> { el.how_much_per_draw } </li>
+							<li className = "quick-draw-old-number-styles old-quick-draw-extra"> { el.quick_draw_extra } </li>
+							<li className = "quick-draw-old-number-styles old-consecutive-number"> { el.consecutive_draws } </li>
+						</ul>
+						<div onClick = { () => { this.deleteNumbers(el.id) } } 
+							className = "quick-draw-delete-button">
+							Delete
+						</div>
+					</div>
+				)
+			})
+		}
 	}//end of displayData
 
 	/*Deletes a row of Quick Draw Numbers 
@@ -199,6 +209,8 @@ class QuickDraw extends Component {
 	addNewQuickDrawNumbers( spots, numbersString, howMuchPerDraw, quickDrawExtra, consecutiveDraws ) {
 		console.log("Running addNewQuickDrawNumbers!")
 
+		let user_id =  this.props.user.id
+
 		fetch('http://localhost:8080/api/quick_draw', {
 			method: 'POST',
 			headers: {
@@ -206,6 +218,7 @@ class QuickDraw extends Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				user_id: user_id,
 				spots: spots,
 				numbers: numbersString,
 				how_much_per_draw: howMuchPerDraw,

@@ -7,7 +7,10 @@ class TakeFive extends Component {
 	/*game information is loaded when
 	this component is mounted*/
 	componentDidMount() {
-		fetch('http://localhost:8080/api/')
+		
+		let id = this.props.user.id
+
+		fetch('http://localhost:8080/api/' + id)
 		.then((response) => {
 			return response.json()
 		})
@@ -20,23 +23,30 @@ class TakeFive extends Component {
 
 	// Old Take 5 numbers are rendered in the page
 	displayData() {
-		return this.props.takeFiveData.map((el, index) => {
+		if( this.props.win4Data ) {
 			return (
-				<div key = { index } >
-					<ul className = "list">
-						<li className = "take-5-number-styles"> { el.first_number } </li>
-						<li className = "take-5-number-styles"> { el.second_number } </li>
-						<li className = "take-5-number-styles"> { el.third_number } </li>
-						<li className = "take-5-number-styles"> { el.fourth_number } </li>
-						<li className = "take-5-number-styles"> { el.fifth_number } </li>
-					</ul>
-					<div onClick = { () => { this.deleteNumbers(el.id) } } 
-						className = "take-5-delete-button">
-						Delete
-					</div>
-				</div>
+				<h1 className = "no-data">No Data Available</h1>
 			)
-		})
+		}
+		else {
+			return this.props.takeFiveData.map((el, index) => {
+				return (
+					<div key = { index } >
+						<ul className = "list">
+							<li className = "take-5-number-styles"> { el.first_number } </li>
+							<li className = "take-5-number-styles"> { el.second_number } </li>
+							<li className = "take-5-number-styles"> { el.third_number } </li>
+							<li className = "take-5-number-styles"> { el.fourth_number } </li>
+							<li className = "take-5-number-styles"> { el.fifth_number } </li>
+						</ul>
+						<div onClick = { () => { this.deleteNumbers(el.id) } } 
+							className = "take-5-delete-button">
+							Delete
+						</div>
+					</div>
+				)
+			})
+		}
 	}//end of displayData
 
 
@@ -74,6 +84,8 @@ class TakeFive extends Component {
 		console.log("Running addNewNumbers!")
 
 		let numbers = this.props.numbers
+		let user_id =  this.props.user.id
+
 
 		console.log("numbers")
 
@@ -85,6 +97,7 @@ class TakeFive extends Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				user_id: user_id,
 				first_number: numbers[0],
 				second_number: numbers[1],
 				third_number: numbers[2],

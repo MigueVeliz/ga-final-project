@@ -3,9 +3,9 @@ const router = require('express').Router(),
 
 	router.post('/', (req, res) => {
 		console.log("Posting This:", req.body)
-		const {numbers, days} = req.body
+		const { user_id, numbers, days } = req.body
 
-		Pick10.create( numbers, days )
+		Pick10.create(user_id, numbers, days )
 			.then((data) => {
 				res.json(data);
 			})
@@ -13,8 +13,11 @@ const router = require('express').Router(),
 	});
 
 
-	router.get('/', (req, res) => {
-		Pick10.findAll()
+	router.get('/:id', (req, res) => {
+		
+		const user_id = req.params.id
+
+		Pick10.findAll( user_id )
 			.then((data) => {
 				res.json(data);
 			})
