@@ -8,7 +8,8 @@ class Win4 extends Component {
 	/* Game information is loaded when
 	this component is mounted */
 	componentDidMount() {
-		fetch('http://localhost:8080/api/win4')
+		let id = this.props.user.id
+		fetch('http://localhost:8080/api/win4/' + id)
 		.then((response) => {
 			return response.json()
 		})
@@ -24,27 +25,34 @@ class Win4 extends Component {
 
 	// Old Pick 10 numbers are rendered in the page
 	displayData() {
-		return this.props.win4Data.map((el, index) => {
+		if( !this.props.win4Data ) {
 			return (
-				<div key = { index } >
-					<ul className = "old-win4-list">
-						<li className = "win4-old-number-styles old-digits"> { el.first_digit } </li>
-						<li className = "win4-old-number-styles old-digits"> { el.second_digit } </li>
-						<li className = "win4-old-number-styles old-digits"> { el.third_digit } </li>
-						<li className = "win4-old-number-styles old-digits"> { el.fourth_digit } </li>
-						<li className = "win4-old-number-styles old-wager_type"> { el.wager_type } </li>
-						<li className = "win4-old-number-styles old-amount-per-wager"> { el.amount_per_wager } </li>
-						<li className = "win4-old-number-styles old-draw-time"> { el.draw_time } </li>
-						<li className = "win4-old-number-styles old-number-of-tickets"> { el.number_of_tickets } </li>
-						<li className = "win4-old-number-styles old-number-of-days"> { el.number_of_days } </li>
-					</ul>
-					<div onClick = { () => { this.deleteNumbers(el.id) } } 
-						className = "win4-delete-button">
-						Delete
-					</div>
-				</div>
+				<h1 className = "no-data">No Data Available</h1>
 			)
-		})
+		}
+		else{
+			return this.props.win4Data.map((el, index) => {
+				return (
+					<div key = { index } >
+						<ul className = "old-win4-list">
+							<li className = "win4-old-number-styles old-digits"> { el.first_digit } </li>
+							<li className = "win4-old-number-styles old-digits"> { el.second_digit } </li>
+							<li className = "win4-old-number-styles old-digits"> { el.third_digit } </li>
+							<li className = "win4-old-number-styles old-digits"> { el.fourth_digit } </li>
+							<li className = "win4-old-number-styles old-wager_type"> { el.wager_type } </li>
+							<li className = "win4-old-number-styles old-amount-per-wager"> { el.amount_per_wager } </li>
+							<li className = "win4-old-number-styles old-draw-time"> { el.draw_time } </li>
+							<li className = "win4-old-number-styles old-number-of-tickets"> { el.number_of_tickets } </li>
+							<li className = "win4-old-number-styles old-number-of-days"> { el.number_of_days } </li>
+						</ul>
+						<div onClick = { () => { this.deleteNumbers(el.id) } } 
+							className = "win4-delete-button">
+							Delete
+						</div>
+					</div>
+				)
+			})
+		}
 	}//end of displayData
 
 	/*Deletes a row of Quick Draw Numbers 
@@ -236,6 +244,7 @@ class Win4 extends Component {
 		console.log("Running addNewWin4Numbers!")
 
 		let data = this.props.newWin4Numbers
+		let user_id =  this.props.user.id
 
 
 		fetch('http://localhost:8080/api/win4', {
@@ -254,6 +263,7 @@ class Win4 extends Component {
 				draw_time: data[6],
 				number_of_tickets: data[7],
 				number_of_days: data[8],
+				user_id: user_id
 			})
 		})
 		.then((response) => {
@@ -293,11 +303,6 @@ class Win4 extends Component {
 	render() {
 		return (
 			<div className = "numbers">
-
-				<h2>Welcome, {this.props.user.name}</h2>
-				<p>Your email address is: {this.props.user.email}</p>
-     			<p>You have a cookie set to: {this.props.user.token}</p>
-     			<button onClick={this.props.logout}>Click here to log out!</button>
 
 				<GoHome getGameMode = { this.props.getGameMode } />
 

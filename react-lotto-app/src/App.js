@@ -134,7 +134,10 @@ class App extends Component {
     if( gameMode === "HOME") {
       return (
         <div className = "container">
-          { this.state.user.name }
+          <div className = "welcome-container">
+            <p>Welcome: { this.state.user.name }!</p>
+          </div>
+          
           <div onClick = { this.getGameMode.bind(this) } className = "box">
             <p className = "game-type">TakeFive</p>
           </div>
@@ -248,7 +251,7 @@ class App extends Component {
 
   // Gets the win4 Game Data
   getWin4Data( data ) {
-    console.log("running getWin4Data[0] = " + data[0].first_digit) 
+    //console.log("running getWin4Data[0] = " + data[0].first_digit) 
     this.setState({
       win4: data
     })

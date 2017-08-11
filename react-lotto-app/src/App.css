@@ -1,15 +1,19 @@
+
 /*******************************************
 ********************************************
 *********** L O G  I N  S T U F F **********
 ********************************************
 *******************************************/
 
+.no-data {
+  color: white;
+}
 
 body, html{
   background-color: #FAFAFA;
 }
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .auth-form, .content{
@@ -89,7 +93,7 @@ button:hover{
 
 
 .App {
-  text-align: center;
+  /*text-align: center;*/
   /*margin: 0;*/
   background-color: #587291;
   /*height: 100vh;*/
@@ -115,15 +119,46 @@ p {
   height: 5vh;
   width: 100vw;
   background-color: #2F394D;
-  display: block;
+  text-align: center;
+  /*display: block;*/
 }
 
 .title {
   font-size: 22px;
   color: white;
   font-weight: bold;
-  /*margin-top: 4px;*/
+  /*text-align: center;*/
+  margin: 0 auto;
   padding-top: 3px;
+  display: inline-block;
+}
+
+.logout-button {
+  background-color: black;
+  font-size: 13px;
+  position: absolute;
+  float: right;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.logout-button:hover {
+  background-color: crimson;
+  color: black;
+}
+
+.welcome-container {
+  /*background-color: white;*/
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px 1px;
+  margin-bottom: 10px;
+}
+
+.welcome-container p {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
 }
 
 /*******************************************

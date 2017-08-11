@@ -5,6 +5,7 @@ class Navigation extends Component {
 		return (
 			<div className = "navigation">
 				<p className = "title">NYC Plays</p>
+     			<button className = "logout-button" onClick={this.props.logout}>Log Out</button>
 			</div>
 		)
 	}
